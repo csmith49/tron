@@ -6,8 +6,8 @@ from itertools import product
 import subprocess
 
 parser = ArgumentParser("T R O N")
-parser.add_argument("grid", required=True)
-parser.parse_args()
+parser.add_argument("grid")
+args = parser.parse_args()
 
 def exec(cmd):
     result = subprocess.run(cmd, stdout=subprocess.PIPE, universal_newlines=True)
@@ -27,14 +27,14 @@ def get_cmds(grid):
 
     for arg in arguments:
         if "flag" in arg.keys():
-            flag = cmd["flag"]
+            flag = arg["flag"]
             prod.append(
-                [f"-{flag}"]
+                [f"--{flag}"]
             )
 
             # try and get the values
             if "values" in arg.keys():
-                values = cmd["values"]
+                values = arg["values"]
                 prod.append(
                     [str(v) for v in values]
                 )

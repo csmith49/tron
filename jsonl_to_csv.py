@@ -2,7 +2,7 @@ from json import loads
 from argparse import ArgumentParser
 from csv import DictWriter
 
-parser = ArugmentParser("jsonl2csv")
+parser = ArgumentParser("jsonl2csv")
 parser.add_argument("--input", required=True)
 parser.add_argument("--output", required=True)
 args = parser.parse_args()
